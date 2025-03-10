@@ -1,37 +1,64 @@
-import { useState } from "react";
-import { Button } from "@/components/ui/button";
-import { Card, CardContent } from "@/components/ui/card";
-
-const words = [
-  "Accomplishment",
-  "Adventure",
-  "Honesty",
-  "Humor",
-  "Integrity",
-  "Joy",
-  "Leadership",
-  "Personal Growth",
-  "Respect",
-  "Self-Mastery",
-];
-
-export default function RandomWordSelector() {
-  const [selectedWord, setSelectedWord] = useState("");
-
-  const handleSelectWord = () => {
-    const randomIndex = Math.floor(Math.random() * words.length);
-    setSelectedWord(words[randomIndex]);
-  };
-
-  return (
-    <div className="flex flex-col items-center justify-center min-h-screen bg-gray-100">
-      <Card className="p-6 text-center w-96 shadow-lg bg-white rounded-2xl">
-        <CardContent>
-          <h1 className="text-xl font-semibold mb-4">Random Word Selector</h1>
-          <p className="text-lg font-medium mb-4">{selectedWord || "Click the button to generate a word!"}</p>
-          <Button onClick={handleSelectWord} className="mt-4">Select Word</Button>
-        </CardContent>
-      </Card>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Random Word Selector</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f3f4f6;
+        }
+        .container {
+            text-align: center;
+            background: white;
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        .button {
+            padding: 10px 20px;
+            font-size: 16px;
+            border: none;
+            background-color: #007bff;
+            color: white;
+            cursor: pointer;
+            border-radius: 5px;
+            margin-top: 10px;
+        }
+        .button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Random Word Selector</h1>
+        <p id="word-display">Click the button to generate a word!</p>
+        <button class="button" onclick="selectRandomWord()">Select Word</button>
     </div>
-  );
-}
+    <script>
+        const words = [
+            "Accomplishment",
+            "Adventure",
+            "Honesty",
+            "Humor",
+            "Integrity",
+            "Joy",
+            "Leadership",
+            "Personal Growth",
+            "Respect",
+            "Self-Mastery"
+        ];
+
+        function selectRandomWord() {
+            const randomIndex = Math.floor(Math.random() * words.length);
+            document.getElementById("word-display").innerText = words[randomIndex];
+        }
+    </script>
+</body>
+</html>
