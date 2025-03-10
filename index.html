@@ -1,0 +1,37 @@
+import { useState } from "react";
+import { Button } from "@/components/ui/button";
+import { Card, CardContent } from "@/components/ui/card";
+
+const words = [
+  "Accomplishment",
+  "Adventure",
+  "Honesty",
+  "Humor",
+  "Integrity",
+  "Joy",
+  "Leadership",
+  "Personal Growth",
+  "Respect",
+  "Self-Mastery",
+];
+
+export default function RandomWordSelector() {
+  const [selectedWord, setSelectedWord] = useState("");
+
+  const handleSelectWord = () => {
+    const randomIndex = Math.floor(Math.random() * words.length);
+    setSelectedWord(words[randomIndex]);
+  };
+
+  return (
+    <div className="flex flex-col items-center justify-center min-h-screen bg-gray-100">
+      <Card className="p-6 text-center w-96 shadow-lg bg-white rounded-2xl">
+        <CardContent>
+          <h1 className="text-xl font-semibold mb-4">Random Word Selector</h1>
+          <p className="text-lg font-medium mb-4">{selectedWord || "Click the button to generate a word!"}</p>
+          <Button onClick={handleSelectWord} className="mt-4">Select Word</Button>
+        </CardContent>
+      </Card>
+    </div>
+  );
+}
